@@ -152,7 +152,7 @@ static const int GRID_COLUMNS = 10;
                         if (neighbor.isAlive)
                         {
                             currentCreature.livingNeighbors += 1;
-                            numAlive++;
+                           
                         }
                     
                         if (currentCreature.livingNeighbors == 3) {
@@ -163,6 +163,10 @@ static const int GRID_COLUMNS = 10;
                         
                             currentCreature.isAlive = NO;
                            
+                        }
+                        
+                        if (currentCreature.isAlive) {
+                            numAlive++;
                         }
                     }
                     
