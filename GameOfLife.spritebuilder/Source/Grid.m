@@ -52,14 +52,33 @@ static const int GRID_COLUMNS = 10;
             [self addChild:creature];
             
             _gridArray[i][j] = creature;
-            
-            creature.isAlive = YES;
+                                                                    //makes sure creatures are visable
+                                                                    //creature.isAlive = YES;
             
             x += _cellWidth;
         }
         
         y += _cellHeight;
     }
+}
+
+-(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event{
+    
+    CGPoint touchLocation = [touch locationInNode:self];
+    
+    Creature *creature = [self creatureForTouchPosistion:touchLocation];
+    
+    creature.isAlive = !creature.isAlive;
+}
+
+-(Creature *)creatureForTouchPosistion:(CGPoint)touchPosistion {
+    
+    int column = touchPosistion.x / _cellWidth;
+    int row = touchPosistion.y / _cellHeight;
+    
+    return _gridArray[row][column];
+    
+    
 }
 
 @end
