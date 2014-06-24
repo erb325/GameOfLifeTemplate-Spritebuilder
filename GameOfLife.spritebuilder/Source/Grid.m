@@ -138,6 +138,10 @@ static const int GRID_COLUMNS = 10;
             Creature *currentCreature = _gridArray[i][j];
             currentCreature.livingNeighbors = 0;
             
+            if (currentCreature.isAlive) {
+                numAlive++;
+            }
+            
             for (int x = (i-1); x <= (i+1); x++) {
                 
                 for (int y = (j-1); y <= (j+1); y++) {
@@ -166,9 +170,7 @@ static const int GRID_COLUMNS = 10;
                         }
                         
                     }
-                    if (currentCreature.isAlive) {
-                        numAlive++;
-                    }
+                   
                 }
             }
         }
